@@ -17,7 +17,7 @@
 
 <template>
   <d2-scroll class="d2-scroll--demo">
-    <div class="row" v-for="n in 100" :key="n">
+    <div class="row" v-for="n in 20" :key="n">
       n: {{ n }}
     </div>
   </d2-scroll>

@@ -1,6 +1,6 @@
 import makeClassnames from 'classnames'
 import { defineComponent, ref, unref, computed, watch, onBeforeUnmount, onMounted } from 'vue'
-import { kebabCase, fromPairs, mergeWith } from 'lodash-es'
+import { kebabCase, fromPairs, mergeWith, isFunction } from 'lodash-es'
 import { makeName, makeClassName } from 'd2/utils/framework/component.js'
 import os from 'overlayscrollbars'
 import 'overlayscrollbars/css/OverlayScrollbars.css'
@@ -22,7 +22,11 @@ export const osCallbacks = [
 
 const osCallbackToEmitName = name => kebabCase(name.replace(/^on/, ''))
 
-export const emits = osCallbacks.map(osCallbackToEmitName)
+export const emits = [
+  ...osCallbacks.map(osCallbackToEmitName),
+  'scroll-top',
+  'scroll-bottom'
+]
 
 const name = 'scroll'
 
@@ -36,17 +40,9 @@ export default defineComponent({
     options: { type: Object },
     extensions: { type: [String, Array, Object] },
     theme: { type: String, default: 'thin-dark' },
-    cordonX: { type: Number, default: 0 },
-    cordonY: { type: Number, default: 0 },
     full: { type: Boolean }
   },
-  emits: [
-    ...emits,
-    'in-cordon-x',
-    'in-cordon-y',
-    'scroll-top',
-    'scroll-bottom'
-  ],
+  emits,
   setup (props, { emit, attrs }) {
     const scrollbarTarget = ref(null)
 
@@ -63,41 +59,29 @@ export default defineComponent({
         autoHide: 'leave',
         autoHideDelay: 300
       },
-      callbacks: fromPairs(osCallbacks.map(name => {
-        const emitName = osCallbackToEmitName(name)
-        let callback = () => {}
-        switch (name) {
-          case 'onScroll':
-            callback = event => {
-              const info = unref(instance).scroll()
-              const ratioY = info.ratio.y
-              emit(emitName, event)
-              const cordonY = info.max.y - info.position.y
-              const cordonX = info.max.x - info.position.x
-              if (cordonY <= props.cordonY) emit('in-cordon-y', event)
-              if (cordonX <= props.cordonX) emit('in-cordon-x', event)
-              if (ratioY === 0) emit('scroll-top', event)
-              if (ratioY === 1) emit('scroll-bottom', event)
-            }
-            break
-          default:
-            callback = event => emit(emitName, event)
-            break
+      callbacks: fromPairs(osCallbacks.map(osCallbackName => {
+        const emitName = osCallbackToEmitName(osCallbackName)
+        let callback = () => emit(emitName, unref(instance))
+        if (osCallbackName === 'onScroll') {
+          callback = () => {
+            emit(emitName, unref(instance))
+            // More callback
+            const ratioY = unref(instance).scroll().ratio.y
+            if (ratioY === 0) emit('scroll-top', unref(instance))
+            if (ratioY === 1) emit('scroll-bottom', unref(instance))
+          }
         }
-        return [
-          name,
-          callback
-        ]
+        return [osCallbackName, callback]
       }))
     }))
 
-    function customizer (left, right, key) {
+    function customizer (_, __, key) {
       if (key === 'callbacks') {
-        return mergeWith({}, left, right, (leftFn, rightFn) => {
-          if (leftFn && isFunction(leftFn) && rightFn && isFunction(rightFn)) {
+        return mergeWith({}, _, __, (oldFn, newFn) => {
+          if (isFunction(oldFn) && isFunction(newFn)) {
             return event => {
-              leftFn(event)
-              rightFn(event)
+              oldFn(event)
+              newFn(event)
             }
           }
         })
