@@ -1,12 +1,13 @@
 import { unref } from 'vue'
 
 /**
- * Supplement px unit
+ * Converts value to a number and add px unit
  * @param {string|number} value original value
  * @param {string} unit css unit name
  * @returns {string} css value with unit
  * @example px(14) => '14px'
  * @example px('14') => '14px'
+ * @example px('1em') => '1px'
  */
 export function px (value) {
   return value ? `${parseFloat(unref(value))}px` : ''

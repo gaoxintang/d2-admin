@@ -1,6 +1,6 @@
 import makeClassnames from 'classnames'
 import { defineComponent, unref, computed } from 'vue'
-import { omitBy, isEmpty } from 'lodash-es'
+import { omitBy, isEmpty, isNumber } from 'lodash-es'
 import { useConfig } from 'd2/components/d2/config/use.js'
 import { makeName, makeClassName } from 'd2/utils/framework/component.js'
 import { px } from 'd2/utils/browser/css.js'
@@ -44,10 +44,12 @@ export default defineComponent({
     })
 
     const height = computed(() => {
-      return px(props.height || props.size)
+      const value = props.height || props.size
+      return isNumber(value) ? px(value) : value
     })
     const width = computed(() => {
-      return px(props.width || props.size)
+      const value = props.width || props.size
+      return isNumber(value) ? px(value) : value
     })
 
     const style = computed(() => omitBy({
