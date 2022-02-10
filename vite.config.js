@@ -36,7 +36,7 @@ import Svg from 'vite-plugin-vue-svg'
 
 // Used to generate svg sprite map
 // [website] https://github.com/anncwb/vite-plugin-svg-icons
-import SvgIcons from 'vite-plugin-svg-icons'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // Bundles only the icons you use
 // [website] https://github.com/antfu/purge-icons
@@ -119,7 +119,7 @@ export default defineConfig({
       open: false
     }),
     PurgeIcons(),
-    SvgIcons({
+    createSvgIconsPlugin({
       iconDirs: [
         resolve('d2/svg/icon')
       ],

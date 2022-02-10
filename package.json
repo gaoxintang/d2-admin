@@ -47,7 +47,7 @@
     "vite-plugin-pages": "^0.20.2",
     "vite-plugin-purge-icons": "^0.7.0",
     "vite-plugin-svg": "^0.7.0",
-    "vite-plugin-svg-icons": "^1.0.5",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-vue-svg": "^0.1.0"
   }
 }
