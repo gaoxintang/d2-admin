@@ -19,7 +19,7 @@ export const indexMenu = new Menu('首页')
 
 export const dashboardIndexMenu = new Menu('控制台首页')
   .url('/dashboard')
-  .icon('icon-park-outline:dashboard')
+  .icon('ph:address-book-fill')
 
 export const dashboardDemoComponentD2ScrollMenus = menus({
   title: '滚动',

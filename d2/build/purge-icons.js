@@ -4,12 +4,7 @@ const { writeFile } = require('fs/promises');
 (async () => {
   const code = await PurgeIcons({
     content: [
-      // '**/*.html',
-      // '**/*.js',
-      // '**/*.vue'
-      // 'd2/temp/test.md'
-      // 'd2/temp/test.html'
-      'd2/temp/test.js'
+      'd2/temp/test.html'
     ],
     format: 'json'
   })
