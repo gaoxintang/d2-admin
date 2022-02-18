@@ -6,7 +6,7 @@ export function useMenu () {
   const router = useRouter()
 
   function navigateByMenu (menu) {
-    router.push(getMenuUrl(menu.url))
+    router.push(getMenuUrl(menu))
   }
 
   return {
