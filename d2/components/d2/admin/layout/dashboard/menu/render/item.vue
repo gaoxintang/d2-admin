@@ -1,16 +1,16 @@
 <template>
-  <a-menu-item :key="getMenuId(menu)">
-    <template #icon>
-      <d2-icon :name="getMenuIcon(menu)"/>
+  <a-menu-item :key="menuId">
+    <template v-if="menuIcon" #icon>
+      <d2-icon :name="menuIcon"/>
     </template>
-    {{ getMenuTitle(menu) }}
+    {{ menuTitle }}
   </a-menu-item>
 </template>
 
 <script>
 import { makeNameByUrl } from 'd2/utils/framework/component.js'
 import { defineComponent } from 'vue'
-import { getMenuId, getMenuTitle, getMenuIcon } from 'd2/utils/framework/menu.js'
+import { useMenuData } from 'd2/use/menu.js'
 
 export default defineComponent({
   name: makeNameByUrl(import.meta.url),
@@ -20,11 +20,15 @@ export default defineComponent({
       required: true
     }
   },
-  setup () {
+  setup (props) {
+    const { menu } = props
+
+    const { menuId, menuTitle, menuIcon } = useMenuData(menu)
+
     return {
-      getMenuId,
-      getMenuTitle,
-      getMenuIcon
+      menuId,
+      menuTitle,
+      menuIcon
     }
   }
 })
