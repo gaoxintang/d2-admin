@@ -1,4 +1,4 @@
-import makeClassnames from 'classnames'
+import joinClassNames from 'classnames'
 import { defineComponent, unref, computed } from 'vue'
 import { pickBy, isUndefined } from 'lodash-es'
 import { isNumberLike } from 'd2/utils/lang/number.js'
@@ -39,7 +39,7 @@ export default defineComponent({
     const center = computed(() => props.center ? 'center' : '')
     const main = computed(() => unref(center) || props.main)
     const cross = computed(() => unref(center) || props.cross)
-    const classnames = computed(() => makeClassnames(
+    const classnames = computed(() => joinClassNames(
       classname,
       {
         [`${classname}--inline-flex`]: props.inlineFlex,

@@ -15,7 +15,7 @@
 <script>
 import { computed, onMounted, onUpdated, ref, unref, watchPostEffect } from 'vue'
 import { useCssVar, useElementBounding } from '@vueuse/core'
-import makeClassnames from 'classnames'
+import joinClassNames from 'classnames'
 import { makeNameByUrl } from 'd2/utils/framework/component.js'
 import { px, convertCssUnit } from 'd2/utils/browser/css.js'
 
@@ -51,16 +51,16 @@ export default {
       }
     })
 
-    const bodyClass = computed(() => makeClassnames('body__main', {
+    const bodyClass = computed(() => joinClassNames('body__main', {
       'body__main--with-header-ghost': unref(headerActive) && !props.headerBorder,
       'body__main--with-footer-ghost': unref(footerActive) && !props.footerBorder
     }))
 
-    const headerClass = computed(() => makeClassnames('body__header', 'layout-blur--body', {
+    const headerClass = computed(() => joinClassNames('body__header', 'layout-blur--body', {
       'body__header--border': props.headerBorder
     }))
 
-    const footerClass = computed(() => makeClassnames('body__footer', 'layout-blur--body', {
+    const footerClass = computed(() => joinClassNames('body__footer', 'layout-blur--body', {
       'body__footer--border': props.footerBorder
     }))
 

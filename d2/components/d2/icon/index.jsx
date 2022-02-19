@@ -1,4 +1,4 @@
-import makeClassnames from 'classnames'
+import joinClassNames from 'classnames'
 import { defineComponent, ref, unref, computed, watch, onMounted, nextTick, onBeforeUpdate } from 'vue'
 import iconify from '@iconify/iconify'
 import { clearElement } from 'd2/utils/browser/dom.js'
@@ -46,7 +46,7 @@ export default defineComponent({
       }
     }
 
-    const classnames = computed(() => makeClassnames(classname, {}))
+    const classnames = computed(() => joinClassNames(classname, {}))
 
     onMounted(load)
     onBeforeUpdate(() => {

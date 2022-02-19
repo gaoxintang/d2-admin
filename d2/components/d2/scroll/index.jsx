@@ -1,4 +1,4 @@
-import makeClassnames from 'classnames'
+import joinClassNames from 'classnames'
 import { defineComponent, ref, unref, computed, watch, onBeforeUnmount, onMounted } from 'vue'
 import { kebabCase, fromPairs, mergeWith, isFunction } from 'lodash-es'
 import { makeName, makeClassName } from 'd2/utils/framework/component.js'
@@ -117,7 +117,7 @@ export default defineComponent({
     
     watch(options, reloadOptions)
     
-    const classnames = computed(() => makeClassnames(classname, attrs.class))
+    const classnames = computed(() => joinClassNames(classname, attrs.class))
 
     return {
       scrollbarTarget,

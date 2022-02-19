@@ -1,4 +1,4 @@
-import makeClassnames from 'classnames'
+import joinClassNames from 'classnames'
 import { defineComponent, unref, computed } from 'vue'
 import { omitBy, isEmpty, isNumber } from 'lodash-es'
 import { useConfig } from 'd2/components/d2/config/use.js'
@@ -57,7 +57,7 @@ export default defineComponent({
       width: unref(width)
     }, isEmpty))
 
-    const classnames = computed(() => makeClassnames(classname, {}))
+    const classnames = computed(() => joinClassNames(classname, {}))
 
     return {
       style,
