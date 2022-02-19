@@ -5,6 +5,8 @@ import { isNumberLike } from 'd2/utils/lang/number.js'
 import { makeName, makeClassName } from 'd2/utils/framework/component.js'
 import { isFlexProp } from 'd2/utils/const/flex.js'
 
+import './flex.scss'
+
 const name = 'flex'
 
 export const componentName = makeName(name)

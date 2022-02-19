@@ -51,6 +51,8 @@ import { useRoute } from 'vue-router'
 import { useD2AdminLayoutDashboardStore } from 'd2/components/d2/admin/layout/dashboard/store/index.js'
 import { useD2AdminUserStore } from 'd2/store/user.js'
 
+import './style/index.scss'
+
 export default {
   name: makeNameByUrl(import.meta.url),
   setup () {

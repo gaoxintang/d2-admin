@@ -6,7 +6,7 @@
 // Please download and import them yourself
 // [preview] https://highlightjs.org/static/demo/
 // [download] https://github.com/highlightjs/highlight.js/tree/main/src/styles
-@import 'd2/style/highlight/atom-one-light.css';
+@import './library/highlight/atom-one-light.css';
 
 // Resolve conflicts between GitHub markdown CSS and highlightjs
 // The .p-0 class is set at markdownItOptions in the vite.config.js file

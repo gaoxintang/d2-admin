@@ -3,4 +3,8 @@
 // If you need other theme but we don't provide them by default
 // Please download and import them yourself
 // [download] https://kingsora.github.io/OverlayScrollbars/#!themes
-@import 'd2/style/scrollbar/thin-dark.css';
+
+@import './library/scrollbar/minimal-dark.css';
+@import './library/scrollbar/minimal-light.css';
+@import './library/scrollbar/thin-dark.css';
+@import './library/scrollbar/thin-light.css';

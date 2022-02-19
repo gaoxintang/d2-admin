@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'd2/style/component/flex.scss';
-@import 'd2/style/component/icon.scss';
-
-@import 'd2/style/themes/default/index.scss';
+@import './system/scrollbar.scss';
+@import './system/markdown.scss';
+@import './system/highlight.scss';

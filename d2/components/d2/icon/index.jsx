@@ -5,6 +5,8 @@ import { clearElement } from 'd2/utils/browser/dom.js'
 import { useConfig } from 'd2/components/d2/config/use.js'
 import { makeName, makeClassName } from 'd2/utils/framework/component.js'
 
+import './icon.scss'
+
 const name = 'icon'
 
 const componentName = makeName(name)
