@@ -10,7 +10,7 @@ import { componentName as configComponentName } from 'd2/components/d2/config/in
 const name = 'svg'
 
 const componentName = makeName(name)
-const classname = makeClassName(name)
+const className = makeClassName(name)
 
 export default defineComponent({
   name: componentName,
@@ -57,23 +57,23 @@ export default defineComponent({
       width: unref(width)
     }, isEmpty))
 
-    const classnames = computed(() => joinClassNames(classname, {}))
+    const classNames = computed(() => joinClassNames(className, {}))
 
     return {
       style,
-      classnames,
+      classNames,
       href
     }
   },
   render () {
     const {
       style,
-      classnames,
+      classNames,
       href
     } = this
     return (
       <svg
-        class={ classnames }
+        class={ classNames }
         style={ style }
         aria-hidden="true"
       >

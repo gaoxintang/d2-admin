@@ -31,7 +31,7 @@ export const emits = [
 const name = 'scroll'
 
 export const componentName = makeName(name)
-export const classname = makeClassName(name)
+export const className = makeClassName(name)
 
 export default defineComponent({
   name: componentName,
@@ -117,22 +117,22 @@ export default defineComponent({
     
     watch(options, reloadOptions)
     
-    const classnames = computed(() => joinClassNames(classname, attrs.class))
+    const classNames = computed(() => joinClassNames(className, attrs.class))
 
     return {
       scrollbarTarget,
       scrollbarVertical,
       scrollbarHorizontal,
-      classnames,
+      classNames,
       instance
     }
   },
   render () {
     const {
-      classnames
+      classNames
     } = this
     return (
-      <div ref="scrollbarTarget" class="os-host" class={ classnames }>
+      <div ref="scrollbarTarget" class="os-host" class={ classNames }>
         <div class="os-resize-observer-host"/>
         <div class="os-padding">
           <div class="os-viewport">

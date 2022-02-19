@@ -8,7 +8,7 @@ import { makeName, makeClassName } from 'd2/utils/framework/component.js'
 const name = 'icon'
 
 const componentName = makeName(name)
-const classname = makeClassName(name)
+const className = makeClassName(name)
 
 export default defineComponent({
   name: componentName,
@@ -46,7 +46,7 @@ export default defineComponent({
       }
     }
 
-    const classnames = computed(() => joinClassNames(classname, {}))
+    const classNames = computed(() => joinClassNames(className, {}))
 
     onMounted(load)
     onBeforeUpdate(() => {
@@ -57,15 +57,15 @@ export default defineComponent({
 
     return {
       wrapper,
-      classnames
+      classNames
     }
   },
   render () {
     const {
-      classnames
+      classNames
     } = this
     return (
-      <span class={ classnames } ref="wrapper"/>
+      <span class={ classNames } ref="wrapper"/>
     )
   }
 })

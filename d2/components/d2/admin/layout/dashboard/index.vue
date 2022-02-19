@@ -54,7 +54,7 @@ import { useD2AdminUserStore } from 'd2/store/user.js'
 export default {
   name: makeNameByUrl(import.meta.url),
   setup () {
-    const classname = makeClassNameByUrl(import.meta.url)
+    const className = makeClassNameByUrl(import.meta.url)
 
     const d2AdminLayoutDashboardStore = useD2AdminLayoutDashboardStore()
     const { collapsedToggle } = d2AdminLayoutDashboardStore
@@ -73,7 +73,7 @@ export default {
     const isCustomBody = computed(() => get(route.meta, 'd2admin.layout.dashboard.customBody', false))
 
     return {
-      classname,
+      className,
       userAvatar,
       userName,
       isCustomBody,

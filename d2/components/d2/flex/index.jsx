@@ -8,7 +8,7 @@ import { isFlexProp } from 'd2/utils/const/flex.js'
 const name = 'flex'
 
 export const componentName = makeName(name)
-export const classname = makeClassName(name)
+export const className = makeClassName(name)
 
 export default defineComponent({
   name: componentName,
@@ -39,21 +39,21 @@ export default defineComponent({
     const center = computed(() => props.center ? 'center' : '')
     const main = computed(() => unref(center) || props.main)
     const cross = computed(() => unref(center) || props.cross)
-    const classnames = computed(() => joinClassNames(
-      classname,
+    const classNames = computed(() => joinClassNames(
+      className,
       {
-        [`${classname}--inline-flex`]: props.inlineFlex,
-        [`${classname}--block`]: props.block,
-        [`${classname}--inline`]: props.inline,
-        [`${classname}--inline-block`]: props.inlineBlock,
-        [`${classname}--wrap`]: props.wrap,
-        [`${classname}--wrap-r`]: props.wrapR,
-        [`${classname}--dir-${props.dir}`]: props.dir,
-        [`${classname}--main-${unref(main)}`]: unref(main),
-        [`${classname}--cross-${unref(cross)}`]: unref(cross),
-        [`${classname}--box-${props.box}`]: props.box,
-        [`${classname}--content-${props.content}`]: props.content,
-        [`${classname}--self-${props.self}`]: props.self
+        [`${className}--inline-flex`]: props.inlineFlex,
+        [`${className}--block`]: props.block,
+        [`${className}--inline`]: props.inline,
+        [`${className}--inline-block`]: props.inlineBlock,
+        [`${className}--wrap`]: props.wrap,
+        [`${className}--wrap-r`]: props.wrapR,
+        [`${className}--dir-${props.dir}`]: props.dir,
+        [`${className}--main-${unref(main)}`]: unref(main),
+        [`${className}--cross-${unref(cross)}`]: unref(cross),
+        [`${className}--box-${props.box}`]: props.box,
+        [`${className}--content-${props.content}`]: props.content,
+        [`${className}--self-${props.self}`]: props.self
       }
     ))
     const style = computed(() => pickBy({
@@ -62,18 +62,18 @@ export default defineComponent({
       flexShrink: props.shrink
     }, value => !isUndefined(value)))
     return {
-      classnames,
+      classNames,
       style
     }
   },
   render () {
     const {
-      classnames,
+      classNames,
       style
     } = this
     const Tag = this.tag
     return (
-      <Tag class={ classnames } style={ style }>
+      <Tag class={ classNames } style={ style }>
         { this.$slots?.default?.() }
       </Tag>
     )

@@ -1,13 +1,13 @@
 <template>
-  <d2-scroll ref="scrollbarRef" :class="bodyClass">
+  <d2-scroll ref="scrollbarRef" :class="bodyClassNames">
     <div class="main__inner" :style="mainInnerStyle">
       <slot/>
     </div>
   </d2-scroll>
-  <div v-if="headerActive" ref="headerRef" :class="headerClass">
+  <div v-if="headerActive" ref="headerRef" :class="headerClassNames">
     <slot name="header"/>
   </div>
-  <div v-if="footerActive" ref="footerRef" :class="footerClass">
+  <div v-if="footerActive" ref="footerRef" :class="footerClassNames">
     <slot name="footer"/>
   </div>
 </template>
@@ -51,16 +51,16 @@ export default {
       }
     })
 
-    const bodyClass = computed(() => joinClassNames('body__main', {
+    const bodyClassNames = computed(() => joinClassNames('body__main', {
       'body__main--with-header-ghost': unref(headerActive) && !props.headerBorder,
       'body__main--with-footer-ghost': unref(footerActive) && !props.footerBorder
     }))
 
-    const headerClass = computed(() => joinClassNames('body__header', 'layout-blur--body', {
+    const headerClassNames = computed(() => joinClassNames('body__header', 'layout-blur--body', {
       'body__header--border': props.headerBorder
     }))
 
-    const footerClass = computed(() => joinClassNames('body__footer', 'layout-blur--body', {
+    const footerClassNames = computed(() => joinClassNames('body__footer', 'layout-blur--body', {
       'body__footer--border': props.footerBorder
     }))
 
@@ -95,9 +95,9 @@ export default {
       headerRef,
       footerRef,
       mainInnerStyle,
-      bodyClass,
-      headerClass,
-      footerClass,
+      bodyClassNames,
+      headerClassNames,
+      footerClassNames,
       headerActive,
       footerActive
     }
