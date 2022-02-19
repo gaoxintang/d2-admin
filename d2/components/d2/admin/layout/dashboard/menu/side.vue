@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, unref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useCssVar } from '@vueuse/core'
 import { compact } from 'lodash-es'
@@ -51,7 +51,10 @@ export default {
 
     const selectedKeys = computed(() => compact([selectedKey.value]))
 
-    const openKeys = computed(() => getMenuPids(selectedKey.value))
+    const openKeys = computed(() => {
+      if (unref(collapsed)) return []
+      return getMenuPids(selectedKey.value)
+    })
 
     const inlineIndent = computed(() => {
       // Keep the same calculation rules as in CSS
