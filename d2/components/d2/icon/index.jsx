@@ -46,7 +46,9 @@ export default defineComponent({
       }
     }
 
-    const classNames = computed(() => joinClassNames(className, {}))
+    const classNames = computed(() => joinClassNames(className, {
+      // Prepare for future extended styles
+    }))
 
     onMounted(load)
     onBeforeUpdate(() => {

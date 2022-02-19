@@ -57,7 +57,9 @@ export default defineComponent({
       width: unref(width)
     }, isEmpty))
 
-    const classNames = computed(() => joinClassNames(className, {}))
+    const classNames = computed(() => joinClassNames(className, {
+      // Prepare for future extended styles
+    }))
 
     return {
       style,
